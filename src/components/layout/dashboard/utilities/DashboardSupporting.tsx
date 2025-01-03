@@ -1,7 +1,15 @@
 import { cn } from "@/lib/utils";
 import React from "react";
+import { Search } from "lucide-react";
+import TeamMembers from "./TeamMembers";
 
-const DashboardSupporting = ({ className }: { className?: string }) => {
+const DashboardSupporting = ({
+  className,
+  isOpen,
+}: {
+  className?: string;
+  isOpen: boolean;
+}) => {
   return (
     <section className={cn("flex flex-col gap-4", className)}>
       {/* Product Best Seller */}
@@ -32,7 +40,7 @@ const DashboardSupporting = ({ className }: { className?: string }) => {
         {/* Sub Header end */}
 
         {/* Card Start */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           {/* Card Caramel Mac */}
           <div className="justify-between items-center flex bg-gradient-to-r from-[#6DACF9] to-[#309EFF] p-4 rounded-[24px] gap-[8px]">
             <div className="flex gap-2 items-center">
@@ -57,18 +65,65 @@ const DashboardSupporting = ({ className }: { className?: string }) => {
           </div>
           {/* Card Caramel Mac */}
 
+          {/* Divider 01 */}
+          <div className="m-[0.5px] h-[1px] bg-[#F2F4F7] w-100%"></div>
+          {/* Divider 01 */}
+
           {/* Card Mocha */}
-          <div className="flex gap-2 items-center justify-between">
-            <div className="flex">
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
               <div className="flex">
                 {/* SVG gambar mahkota */}
-                <img src="2.svg" alt="2" width={32} height={32} />
+                <img
+                  src="2.svg"
+                  alt="2"
+                  width={isOpen ? 32 : 40}
+                  height={isOpen ? 32 : 40}
+                />
                 {/* Angka */}
               </div>
-              <img src="Moca.png" alt="moca" width={35} height={53} />
+              <div className="rounded-[12px] w-[48px] h-[48px] flex items-center place-content-center border border-[#F2F4F7] bg-gradient-to-r from-[#FFF] to-[#F2F2F2]">
+                <img src="Moca.png" alt="moca" width={35} height={53} />
+              </div>
               <div className="row">
                 <p className="text-[#344054] text-[14px]">Mocha</p>
                 <p className="text-[#667085] text-[12px]">Sweet Coffee</p>
+              </div>
+            </div>
+            <div className="flex w-[140px] justify-between">
+              <p className="text-[#667085] text-[12px]">720</p>
+              <p className="text-[#0077ED] text-[16px]">IDR.3,820,000</p>
+            </div>
+          </div>
+          {/* Card Mocha */}
+
+          {/* Divider 02 */}
+          <div className="m-[0.5px] h-[1px] bg-[#F2F4F7] w-100%"></div>
+          {/* Divider 02 */}
+
+          {/* Card Mocha */}
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              <div className="flex">
+                {/* SVG gambar mahkota */}
+                <img
+                  src="3.svg"
+                  alt="3"
+                  width={isOpen ? 32 : 40}
+                  height={isOpen ? 32 : 40}
+                />
+                {/* Angka */}
+              </div>
+              <div className="rounded-[12px] w-[48px] h-[48px] flex items-center place-content-center border border-[#F2F4F7] bg-gradient-to-r from-[#FFF] to-[#F2F2F2]">
+                <img
+                  src="TorajaCoffee.png"
+                  alt="Toraja Coffee"
+                  className="w-[60px] h-[69px]"
+                />
+              </div>
+              <div className="row">
+                <p className="text-[#344054] text-[14px]">Toraja Coffee</p>
+                <p className="text-[#667085] text-[12px]">Manual Brew</p>
               </div>
             </div>
             <div className="flex w-[140px] justify-between">
@@ -84,7 +139,35 @@ const DashboardSupporting = ({ className }: { className?: string }) => {
       {/* Product Best Seller */}
 
       {/* Team Members */}
-      <div className="border p-8 rounded-xl">Team Members</div>
+      <div className="border p-3 rounded-[24px]">
+        <div className="flex justify-between items-center ">
+          <p className="text-[16px] text-[#475467]">Team Members</p>
+          <div className="flex gap-[6px]"></div>
+          <div className="rounded-[12px] bg-[#FCFCFD] border border-[#E4E7EC] flex p-[8px]">
+            <img
+              src="Arrow-up-right.svg"
+              alt="arrowupright"
+              width={24}
+              height={24}
+            />
+          </div>
+        </div>
+        {/* search bar */}
+
+        <div className="relative flex items-center border border-[#E4E7EC] rounded-[12px] text-muted-foreground">
+          <Search className="absolute left-4 h-5 w-5 text-gray-400 pointer-events-none" />
+          <input
+            type="text"
+            placeholder="Search"
+            className="w-full p-[12px] pl-10 rounded-[12px] bg-transparent border-0 placeholder-gray-400"
+          />
+        </div>
+        {/* search bar */}
+
+        {/* Team Member */}
+        <TeamMembers isOpen={isOpen} />
+        {/* Team Member */}
+      </div>
     </section>
   );
 };

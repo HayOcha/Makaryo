@@ -1,7 +1,9 @@
+"use client";
+import { useState } from "react";
 import ChartsDashboard from "./ChartsDashboard";
 import DashboardSupporting from "./DashboardSupporting";
 
-const Dashboard = () => {
+const Dashboard = ({ isOpen }: { isOpen: boolean }) => {
   return (
     <div className="px-8">
       {/* Section Left Start*/}
@@ -135,7 +137,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* Sales Overview end*/}
-        <DashboardSupporting className="col-span-2" />
+        <DashboardSupporting className="col-span-2" isOpen={isOpen} />
       </div>
     </div>
   );
