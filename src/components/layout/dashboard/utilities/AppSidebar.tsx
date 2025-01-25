@@ -1,3 +1,4 @@
+"use client";
 import {
   Sidebar,
   SidebarContent,
@@ -6,8 +7,12 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 export function AppSidebar({ isOpen }: { isOpen: boolean }) {
+  const pathname = usePathname();
+
   return (
     <Sidebar className={`${isOpen ? "block" : "hidden"} lg:block`}>
       <SidebarHeader>
@@ -27,31 +32,75 @@ export function AppSidebar({ isOpen }: { isOpen: boolean }) {
           <div className="p-[24]">
             <Link
               href="/"
-              className="full flex bg-[#0077ED] rounded-[14px] px-[14px] py-[4px]"
+              className={clsx(
+                "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium md:flex-none md:justify-start md:p-2 md:px-3",
+                {
+                  "bg-blue-600 text-white-600": pathname === "/",
+                },
+              )}
             >
               <img src="/Dashboard-icon.svg" alt="Dashboardicon" />
-              <p className="text-[16px] text-[#FFFFFF] p-[14px]">Dashboard</p>
+              <p
+                className={clsx("text-[16px] text-[#667085] p-[14px]", {
+                  "text-[#FFFFFF]": pathname === "/",
+                })}
+              >
+                Dashboard
+              </p>
             </Link>
             <Link
               href="/table"
-              className="full flex rounded-[14px] px-[14px] py-[4px]"
+              className={clsx(
+                "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium md:flex-none md:justify-start md:p-2 md:px-3",
+                {
+                  "bg-blue-600 text-white": pathname === "/table",
+                },
+              )}
             >
               <img src="/Table-02.svg" alt="tableicon" />
-              <p className="text-[16px] text-[#667085] p-[14px]">Table</p>
+              <p
+                className={clsx("text-[16px] text-[#667085] p-[14px]", {
+                  "text-[#FFFFFF]": pathname === "/table",
+                })}
+              >
+                Table
+              </p>
             </Link>
             <Link
               href="/report"
-              className="full flex rounded-[14px] px-[14px] py-[4px]"
+              className={clsx(
+                "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium md:flex-none md:justify-start md:p-2 md:px-3",
+                {
+                  "bg-blue-600 text-white-600": pathname === "/report",
+                },
+              )}
             >
               <img src="/Report.svg" alt="reporticon" />
-              <p className="text-[16px] text-[#667085] p-[14px]">Report</p>
+              <p
+                className={clsx("text-[16px] text-[#667085] p-[14px]", {
+                  "text-[#FFFFFF]": pathname === "/report",
+                })}
+              >
+                Report
+              </p>
             </Link>
             <Link
               href="/employee"
-              className="full flex rounded-[14px] px-[14px] py-[4px]"
+              className={clsx(
+                "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium md:flex-none md:justify-start md:p-2 md:px-3",
+                {
+                  "bg-blue-600 text-white-600": pathname === "/employee",
+                },
+              )}
             >
               <img src="/Users.svg" alt="Usersicon" />
-              <p className="text-[16px] text-[#667085] p-[14px]">Employee</p>
+              <p
+                className={clsx("text-[16px] text-[#667085] p-[14px]", {
+                  "text-[#FFFFFF]": pathname === "/employee",
+                })}
+              >
+                Employee
+              </p>
             </Link>
           </div>
         </SidebarGroup>
